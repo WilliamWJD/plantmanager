@@ -6,6 +6,7 @@ import colors from '../styles/colors';
 import Welcome from '../pages/welcome';
 import { UserIdentification } from '../pages/UserIdentification';
 import { Confirmation } from '../pages/Confirmation';
+import { PlantSelect } from '../pages/PlantSelect';
 
 const StackRoutes = createStackNavigator();
 
@@ -31,6 +32,11 @@ const AppRoutes: React.FC = () =>(
         <StackRoutes.Screen
             name="Confirmation"
             component={Confirmation}
+        />
+
+<       StackRoutes.Screen
+            name="PlantSelect"
+            component={PlantSelect}
         />
     </StackRoutes.Navigator>
 )
