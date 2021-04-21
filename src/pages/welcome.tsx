@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -8,6 +9,12 @@ import fonts from '../styles/fonts';
 import wateringImg from '../assets/watering.png';
 
 export function Welcome() {
+    const navigation = useNavigation();
+
+    function handleStart(){
+        navigation.navigate('UserIdentification')
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.wrapper}>
@@ -17,9 +24,11 @@ export function Welcome() {
                     style={styles.image}
                     resizeMode="contain"
                 />
-                <Text style={styles.subTitle}>Não esqueça mais de regas duas plantas. Nós cuidamos de lembrar você sempre que precisar</Text>
+                <Text style={styles.subtitle}>Não esqueça mais de regas suas plantas. Nós cuidamos de lembrar você sempre que precisar</Text>
 
-                <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+                <TouchableOpacity style={styles.button} activeOpacity={0.7}
+                    onPress={handleStart}
+                >
                     <Feather
                         name="chevron-right"
                         style={styles.buttonIcon}
@@ -54,11 +63,12 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').width * 0.7,
     },
 
-    subTitle: {
+    subtitle: {
         textAlign: 'center',
         fontSize: 18,
         paddingHorizontal: 20,
-        color: colors.heading
+        color: colors.heading,
+        fontFamily: fonts.text
     },
 
     button: {
