@@ -47,7 +47,7 @@ export function UserIdentification(){
                         />
                         <View style={styles.footer}>
                             <Button
-                                name="teste"
+                                name="Confirmar"
                             />
                         </View>
                     </View>
