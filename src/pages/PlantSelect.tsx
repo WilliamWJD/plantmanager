@@ -4,6 +4,7 @@ import { Text, StyleSheet, View, FlatList } from 'react-native';
 import { Header } from '../components/Header';
 import { EnviromentButton } from '../components/EnviromentButton';
 import { PlantCardPrimary } from '../components/PlantCardPrimary';
+import { Loading } from '../components/Loading';
 
 import api from '../services/api';
 
@@ -33,11 +34,12 @@ export function PlantSelect(){
     const [ plants, setPlants ] = useState<PlantsProps[]>([])
     const [ filteredPlants, setFilteredPlants ] = useState<PlantsProps[]>([])
     const [ enviromentSelected, setEnviromentSelected ] = useState('all')
+    const [ loading, setLoading ] = useState(true);
 
     function handleEnviromentSelected(enviroment: string){
         setEnviromentSelected(enviroment)
 
-        if(enviroment === 'all'){
+        if(enviroment == 'all'){
             return setFilteredPlants(plants)
         }
 
@@ -66,10 +68,16 @@ export function PlantSelect(){
         async function fetchPlants(){
             const { data } = await api.get('/plants?_sort=name&_order=asc');
             setPlants(data);
+            setFilteredPlants(data)
+            setLoading(false)
         }
 
         fetchPlants();
     },[])
+
+    if(loading){
+        return <Loading />
+    }
 
     return(
         <View style={styles.container}>
@@ -87,7 +95,7 @@ export function PlantSelect(){
                         <EnviromentButton
                             title={ item.title }
                             active={ item.key === enviromentSelected }
-                            onPress={ ()=>handleEnviromentSelected(item.key) }
+                            onPress={()=>handleEnviromentSelected(item.key)}
                         />
                     )}
                     horizontal
@@ -142,7 +150,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         paddingBottom:5,
         marginLeft:32,
-        marginVertical:32
+        marginVertical:32,
+        paddingRight:32
     },
 
     plants:{
