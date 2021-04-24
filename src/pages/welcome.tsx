@@ -24,7 +24,7 @@ export function Welcome() {
                     style={styles.image}
                     resizeMode="contain"
                 />
-                <Text style={styles.subtitle}>Não esqueça mais de regas suas plantas. Nós cuidamos de lembrar você sempre que precisar</Text>
+                <Text style={styles.subtitle}>Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você sempre que precisar</Text>
 
                 <TouchableOpacity style={styles.button} activeOpacity={0.7}
                     onPress={handleStart}
