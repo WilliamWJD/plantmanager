@@ -7,6 +7,8 @@ import { EnviromentButton } from '../components/EnviromentButton';
 import { PlantCardPrimary } from '../components/PlantCardPrimary';
 import { Loading } from '../components/Loading';
 
+import { PlantProps } from '../libs/storage';
+
 import api from '../services/api';
 
 import colors from '../styles/colors';
@@ -17,23 +19,10 @@ interface EnviromentsProps{
     title:string
 }
 
-interface PlantsProps{
-    id: string,
-    name: string,
-    about: string,
-    water_tips: string
-    photo: string,
-    environments: [string],
-    frequency: {
-      times: number,
-      repeat_every: string
-    }
-}
-
 export function PlantSelect(){
     const [ enviroments, setEnviromentos ] = useState<EnviromentsProps[]>([])
-    const [ plants, setPlants ] = useState<PlantsProps[]>([])
-    const [ filteredPlants, setFilteredPlants ] = useState<PlantsProps[]>([])
+    const [ plants, setPlants ] = useState<PlantProps[]>([])
+    const [ filteredPlants, setFilteredPlants ] = useState<PlantProps[]>([])
     const [ enviromentSelected, setEnviromentSelected ] = useState('all')
     const [ loading, setLoading ] = useState(true);
 

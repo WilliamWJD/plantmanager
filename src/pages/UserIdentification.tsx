@@ -44,9 +44,13 @@ export function UserIdentification() {
             return Alert.alert('Ops','Me diz como chamar você 😢')
         }
 
-        AsyncStorage.setItem('@plantmanager:user', name);
+        try{
+            AsyncStorage.setItem('@plantmanager:user', name);
+            navigation.navigate('Confirmation');
+        }catch(err){
+            return Alert.alert('Erro', 'Não foi possível salvar o seu nome 😢')
+        }
 
-        navigation.navigate('Confirmation');
     }    
 
     return (
