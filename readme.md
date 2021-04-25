@@ -16,6 +16,7 @@
   <img alt="Frontend" src="./images/img4.jpeg" width="200" width="100%" />
   <img alt="Frontend" src="./images/img5.jpeg" width="200" width="100%" />
   <img alt="Frontend" src="./images/img6.jpeg" width="200" width="100%" />
+  <img alt="Frontend" src="./images/img7.jpeg" width="200" width="100%" />
 </p>
 
 ## 💻 Projeto
