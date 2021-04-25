@@ -52,7 +52,7 @@ export function Confirmation(){
 
                 <View style={styles.footer}>
                     <Button
-                        name="Confirmar"
+                        name={buttonTitle}
                         onPress={handleMoveOn}
                     />
                 </View>
