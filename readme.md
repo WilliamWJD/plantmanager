@@ -4,7 +4,7 @@
 </h1>
 
 <h4 align="center">
-  ☕ Projeto desenvolvido duranta a NLW
+  ☕ Projeto desenvolvido durante a NLW
 </h4>
 
 <br>
