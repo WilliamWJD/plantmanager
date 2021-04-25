@@ -20,6 +20,31 @@ export function MyPlants(){
     const [loading, setLoading] = useState(true);
     const [nextWatered, setNextWatered] = useState<string>()
 
+    useEffect(()=>{
+        async function loadStorageData(){
+            const plantsStoraged = await loadPlant();
+
+
+                const nextTime = formatDistance(
+                    new Date(plantsStoraged[0].dateTimeNotification).getTime(),
+                    new Date().getTime(),
+                    {locale:pt}
+                )
+
+                setNextWatered(`Não esqueça de regar a ${plantsStoraged[0].name} à ${nextTime} horas.`)
+
+                setMyPlants(plantsStoraged);
+            
+            setLoading(false)
+        }
+
+        loadStorageData();
+    },[])
+
+    if(loading){
+        return <Loading/>
+    }
+
     function handleRemove(plant:PlantProps){
         Alert.alert('Remover', `Deseja remover a ${plant.name}?`,[
             {
@@ -40,29 +65,6 @@ export function MyPlants(){
                 }
             }
         ])
-    }
-
-    useEffect(()=>{
-        async function loadStorageData(){
-            const plantsStoraged = await loadPlant();
-
-            const nextTime = formatDistance(
-                new Date(plantsStoraged[0].dateTimeNotification).getTime(),
-                new Date().getTime(),
-                {locale:pt}
-            )
-
-            setNextWatered(`Não esqueça de regar a ${plantsStoraged[0].name} à ${nextTime} horas.`)
-
-            setMyPlants(plantsStoraged);
-            setLoading(false)
-        }
-
-        loadStorageData();
-    },[])
-
-    if(loading){
-        return <Loading/>
     }
 
     return(
