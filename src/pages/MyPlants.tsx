@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { formatDistance } from 'date-fns/esm';
+import { pt } from 'date-fns/locale';
 
 import { Header } from '../components/Header';
+import { Loading } from '../components/Loading';
+import { PlantCardSecondary } from '../components/PlantCardSecondary';
+
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 import { loadPlant, PlantProps } from '../libs/storage';
 
 import waterdropImage from '../assets/waterdrop.png'
-import { formatDistance } from 'date-fns/esm';
-import { pt } from 'date-fns/locale';
-import fonts from '../styles/fonts';
-import { PlantCardSecondary } from '../components/PlantCardSecondary';
+
 
 export function MyPlants(){
     const [myPlants, setMyPlants] = useState<PlantProps[]>([]);
@@ -35,6 +38,10 @@ export function MyPlants(){
 
         loadStorageData();
     },[])
+
+    if(loading){
+        return <Loading/>
+    }
 
     return(
         <View style={styles.container}>
